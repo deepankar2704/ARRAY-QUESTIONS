@@ -1,0 +1,12 @@
+ vector<int> findArray(vector<int>& pref) {
+        vector<int>ans;
+        int n=pref.size();
+        ans.push_back(pref[0]);
+
+        for(int i=1; i<n; i++)
+        {
+            int number=pref[i-1]^pref[i];
+            ans.push_back(number);   
+        }
+        return ans; 
+    }
