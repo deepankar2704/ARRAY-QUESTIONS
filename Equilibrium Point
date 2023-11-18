@@ -1,0 +1,27 @@
+Input: 
+n = 5 
+A[] = {1,3,5,2,2} 
+Output: 
+3 
+Explanation:  
+equilibrium point is at position 3 as sum of elements before it (1+3) = sum of elements after it (2+2). 
+
+CODE:
+   int equilibriumPoint(long long a[], int n) {
+        int totalSum=0;
+        for(int i=0; i<n; i++)
+        {
+            totalSum+=a[i];
+        }
+        
+        int sum=0;
+        for(int i=0; i<n ;i++)
+        {
+            sum+=a[i];
+            if(sum==totalSum)
+            return i+1;
+            
+            totalSum=totalSum-a[i];
+        } 
+        return -1;
+    }
