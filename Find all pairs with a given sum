@@ -1,0 +1,35 @@
+Input:
+A[] = {1, 2, 4, 5, 7}
+B[] = {5, 6, 3, 4, 8} 
+X = 9 
+Output: 
+1 8
+4 5 
+5 4
+Explanation:
+(1, 8), (4, 5), (5, 4) are the
+pairs which sum to 9.
+
+CODE:
+    vector<pair<int,int>> allPairs(int a[], int b[], int n, int m, int x)
+    {
+        sort(a,a+n);
+        sort(b,b+m);
+        map<int,int>mp;
+        vector<pair<int,int>>ans;
+        for(int i=0; i<m; i++)
+        {
+            mp[b[i]]=i;
+        }
+        
+        for(int i=0; i<n; i++)
+        {
+            int findNum=x-a[i];
+            if(mp.find(findNum)!=mp.end())
+            {
+                pair<int,int>p=make_pair(a[i],findNum);
+                ans.push_back(p);
+            }
+        }
+        return ans;
+    }
